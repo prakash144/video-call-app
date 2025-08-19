@@ -1,8 +1,9 @@
+// src/App.tsx
 import { Routes, Route, Link, useLocation } from "react-router-dom";
-import { SendHorizontal, Twitter, Facebook, Instagram, Linkedin, Github, Globe } from "lucide-react";
 import "./App.css";
 import HomePage from "./pages/home";
 import RoomPage from "./pages/room";
+import { SendHorizontal, Twitter, Facebook, Instagram, Linkedin, Github, Globe } from "lucide-react";
 
 function App() {
     const location = useLocation();
@@ -34,7 +35,7 @@ function App() {
             {/* Footer */}
             {!isRoomPage && (
                 <footer className="app-footer">
-                    <div className="footer-content">
+                    <div className="footer-left">
                         <div className="social-links">
                             <a href="https://t.me/" target="_blank" rel="noopener noreferrer" aria-label="Telegram"><SendHorizontal /></a>
                             <a href="https://twitter.com/Rabidas_Prakash" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><Twitter /></a>
@@ -44,7 +45,9 @@ function App() {
                             <a href="https://github.com/prakash144" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github /></a>
                             <a href="https://prakashrabidas.in/" target="_blank" rel="noopener noreferrer" aria-label="Portfolio"><Globe /></a>
                         </div>
-                        <p className="footer-text">
+                    </div>
+                    <div className="footer-right">
+                        <p>
                             © {new Date().getFullYear()} PremiumMeet. Built by <a href="https://prakashrabidas.in/" target="_blank" rel="noopener noreferrer">Prakash</a>. All Rights Reserved.
                         </p>
                     </div>
