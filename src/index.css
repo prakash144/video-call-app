@@ -3,199 +3,35 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
 }
 
-body {
+html, body, #root {
+  height: 100%;
+  font-family: "Segoe UI", Roboto, Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
   background: #f9f9f9;
   color: #333;
   line-height: 1.5;
 }
 
-/* -------- App Layout -------- */
-.app-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-.app-header {
-  background: #1e293b;
-  color: white;
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.nav-link {
-  color: #f1f5f9;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.nav-link:hover {
-  text-decoration: underline;
-}
-
-.app-main {
-  flex: 1;
-  padding: 2rem;
-  max-width: 960px;
-  margin: 0 auto;
-}
-
-.app-footer {
-  background: #1e293b;
-  color: #f1f5f9;
+/* Utility Classes */
+.text-center {
   text-align: center;
-  padding: 1rem;
-  font-size: 0.875rem;
 }
 
-/* -------- Home Page -------- */
-.homepage-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  padding: 1rem;
+.hidden {
+  display: none;
 }
 
-.card {
-  background: #fff;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  text-align: center;
-  width: 100%;
-  max-width: 400px;
-}
-
-.card h1 {
-  margin-bottom: 1.5rem;
-}
-
-.card form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.card input,
-.card button {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: 1px solid #d1d5db;
-  box-sizing: border-box;
-}
-
-.card input:focus {
-  outline: none;
-  border-color: #3b82f6;
-  box-shadow: 0 0 0 2px rgba(59,130,246,0.3);
-}
-
-.card button {
-  background: #3b82f6;
-  color: white;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.card button:hover {
-  background: #2563eb;
-}
-
-/* -------- Room Page -------- */
-.room-container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  background: #f3f4f6; /* light gray instead of dark */
-  color: #111;
-}
-
-.room-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #e5e7eb;
-  padding: 1rem 2rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  flex-wrap: wrap;
-}
-
-.room-header h2 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #2563eb;
-  margin: 0;
-  word-break: break-word;
-}
-
-.leave-btn {
-  padding: 0.6rem 1.2rem;
-  background: #dc2626;
-  border: none;
-  border-radius: 8px;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.2s;
-  margin-top: 0.5rem;
-}
-
-.leave-btn:hover {
-  background: #b91c1c;
-}
-
-.room-main {
-  flex: 1;
-  width: 100%;
-  background: white;
-}
-
-/* -------- Responsive -------- */
+/* -------- Responsive Utilities -------- */
 @media (max-width: 768px) {
-  .card {
-    padding: 1.5rem;
-  }
-  .card h1 {
-    font-size: 1.5rem;
-  }
-  .room-header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1rem;
-  }
-  .leave-btn {
-    width: 100%;
-    text-align: center;
+  .hide-md {
+    display: none !important;
   }
 }
 
 @media (max-width: 480px) {
-  .card {
-    padding: 1rem;
-  }
-  .card h1 {
-    font-size: 1.25rem;
-  }
-  .card input, .card button {
-    font-size: 0.9rem;
-    padding: 0.7rem;
-  }
-  .room-header h2 {
-    font-size: 1rem;
+  .hide-sm {
+    display: none !important;
   }
 }

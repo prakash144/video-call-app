@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import { ZegoUIKitPrebuilt } from "@zegocloud/zego-uikit-prebuilt";
+import "./room.css";
 
 const RoomPage = () => {
     const { roomId } = useParams<{ roomId: string }>();
@@ -19,9 +20,7 @@ const RoomPage = () => {
         }
 
         const appIdRaw = import.meta.env.VITE_ZEGO_APP_ID;
-        const serverSecret = import.meta.env.VITE_ZEGO_SERVER_SECRET as
-            | string
-            | undefined;
+        const serverSecret = import.meta.env.VITE_ZEGO_SERVER_SECRET as string | undefined;
 
         const appID = appIdRaw ? Number(appIdRaw) : NaN;
         if (!appID || Number.isNaN(appID) || !serverSecret) {
@@ -50,9 +49,7 @@ const RoomPage = () => {
 
                 zp.joinRoom({
                     container: meetingRef.current ?? undefined,
-                    scenario: {
-                        mode: ZegoUIKitPrebuilt.VideoConference,
-                    },
+                    scenario: { mode: ZegoUIKitPrebuilt.VideoConference },
                     onJoinRoom: () => {
                         if (!mounted) return;
                         setLoading(false);
@@ -66,6 +63,14 @@ const RoomPage = () => {
                         setJoined(false);
                     },
                 });
+
+                // 🔑 fallback: stop loading after 5s if joinRoom doesn’t fire
+                setTimeout(() => {
+                    if (mounted && loading) {
+                        setLoading(false);
+                    }
+                }, 1000);
+
             } catch (err) {
                 setError("Failed to join the room.");
                 setLoading(false);
@@ -98,20 +103,26 @@ const RoomPage = () => {
 
     return (
         <div className="room-container">
-            <header className="room-header sticky top-0 z-10">
-                <h2>Room: {roomId}</h2>
-                <button
-                    onClick={handleLeave}
-                    className="leave-btn"
-                    disabled={!joined && loading}
-                >
-                    Leave
-                </button>
+            <header className="room-header">
+                <div className="left">
+                    <span className="logo">🎥 VideoCall</span>
+                    <span className="room-badge">Room: {roomId}</span>
+                </div>
+                <div className="right">
+                    <button
+                        onClick={handleLeave}
+                        className="leave-btn"
+                        disabled={!joined && loading}
+                    >
+                        🚪 Leave Room
+                    </button>
+                </div>
             </header>
 
             {loading && !joined && (
-                <div className="flex items-center justify-center flex-1 text-gray-400">
-                    Connecting to room...
+                <div className="loading-overlay">
+                    <div className="spinner"></div>
+                    <p>Connecting to room...</p>
                 </div>
             )}
 

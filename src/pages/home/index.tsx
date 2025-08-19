@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./home.css";
 
 const HomePage = () => {
     const [roomCode, setRoomCode] = useState("");
@@ -17,26 +18,25 @@ const HomePage = () => {
     };
 
     return (
-        <div className="homepage-container">
-            <div className="card">
-                <h1>🎥 Video Call App</h1>
+        <div className="homepage">
+            <div className="home-card">
+                <h1 className="title">🎥 Premium Video Call</h1>
+                <p className="subtitle">Join or create a secure meeting room instantly</p>
+
                 <form onSubmit={handleFormSubmit}>
-                    <label htmlFor="room-input">Enter Room Code</label>
                     <input
                         id="room-input"
                         value={roomCode}
                         onChange={(e) => setRoomCode(e.target.value)}
                         type="text"
                         required
-                        placeholder="e.g. team-meeting-123"
+                        placeholder="Enter Room Code"
+                        className="input-box"
                     />
-                    <button type="submit">Join Room</button>
+                    <button type="submit" className="btn join-btn">Join Room</button>
                 </form>
 
-                <button
-                    onClick={handleCreateRoom}
-                    style={{ marginTop: "1rem", background: "#10b981" }}
-                >
+                <button onClick={handleCreateRoom} className="btn create-btn">
                     + Create New Room
                 </button>
             </div>
